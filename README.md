@@ -46,9 +46,9 @@ cmd://cmd /c "cmdkey /generic:TERMSRV/{URL:HOST} /user:{USERNAME} /pass:{PASSWOR
 cmd://bash -c "FILE=/tmp/connect.remmina ; echo -en '[remmina]\nname={TITLE}\nprotocol=RDP\nserver={BASE:RMVSCM}\nscale=1\nviewmode=1\nusername={USERNAME}\npassword='`remmina-encode-password.py {PASSWORD}` > $FILE ; remmina -c $FILE ; rm -f $FILE"
 ```
 
-  More secure command:
+  More secure command (username can be in format domain\username):
 ```
-cmd://bash -c "export DIR=/tmp/remmina; mkdir -p $DIR; chmod 700 $DIR; export FILE=$(mktemp -p $DIR XXXXXXXXXX --suffix=.remmina); echo -e '[remmina]\nname={TITLE}\nprotocol=RDP\nserver={BASE:RMVSCM}\nscale=1\nviewmode=1\nusername={USERNAME}\npassword='`remmina-encode-password.py {PASSWORD}` > $FILE ; nohup remmina -c $FILE &"
+cmd://bash -c "export DIR=/tmp/remmina; mkdir -p $DIR; chmod 700 $DIR; export FILE=$(mktemp -p $DIR XXXXXXXXXX --suffix=.remmina); echo -e '[remmina]\nname={TITLE}\nprotocol=RDP\nserver={BASE:RMVSCM}\nscale=1\nviewmode=1\n'`remmina-split-username.py '{USERNAME}'`'\npassword='`remmina-encode-password.py {PASSWORD}` > $FILE ; nohup remmina -c $FILE &"
 ```
 
 also we will need to install a small helper script:
