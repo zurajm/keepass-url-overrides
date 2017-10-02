@@ -53,7 +53,9 @@ cmd://bash -c "export DIR=/tmp/remmina; mkdir -p $DIR; chmod 700 $DIR; export FI
 
 also we will need to install a small helper script:
 ```bash
-curl -o /usr/local/bin/remmina-encode-password.py https://raw.githubusercontent.com/kvaps/keepass2-url-overriddes/master/remmina/remmina-encode-password.py
+curl -o /usr/local/bin/remmina-split-username.py https://raw.githubusercontent.com/zurajm/keepass-url-overrides/master/remmina/remmina-split-username.py
+curl -o /usr/local/bin/remmina-encode-password.py https://raw.githubusercontent.com/zurajm/keepass-url-overrides/master/remmina/remmina-encode-password.py
+chmod +x /usr/local/bin/remmina-split-username.py
 chmod +x /usr/local/bin/remmina-encode-password.py
 ```
 
